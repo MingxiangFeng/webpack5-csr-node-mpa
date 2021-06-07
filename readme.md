@@ -11,8 +11,6 @@ npm run dev
 npm run build
 ```
 ## 其他
-```
-
 - 问题
   - webpack-hot-middleware不生效 ("webpack-hot-middleware": "^2.25.0")
     - 解决方法1 
