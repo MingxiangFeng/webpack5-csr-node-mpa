@@ -10,3 +10,7 @@ new Vue({
   router,
   render: h => h(App)
 })
+
+if (module['hot']) {
+  module['hot'].accept();
+}

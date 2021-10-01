@@ -1,5 +1,5 @@
 <template>
-  <div>home5
+  <div>hzzz1122zz222233
     <button @click="toSearch">to search</button>
   </div>
 </template>

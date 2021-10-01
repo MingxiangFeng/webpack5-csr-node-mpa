@@ -40,11 +40,16 @@ if(isPro) {
   const config = require('./build/webpack.server.conf')
   for (const key in config.entry) {
     const item = config.entry[key]
-    item.unshift('webpack-hot-middleware/client')
+    // 官方包
+    // item.unshift('webpack-hot-middleware/client')
+    // 民间优化包
+    item.unshift('./build/webpack-hot-middleware/client')
   }
   const compiler = webpack(config);
   app.use(middleware(compiler, { publicPath: config.output.publicPath }))
-  app.use(require("webpack-hot-middleware")(compiler));
+  app.use(require("webpack-hot-middleware")(compiler, {
+    overlay: true
+  }));
 }
 
 
