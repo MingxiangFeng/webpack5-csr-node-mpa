@@ -84,27 +84,34 @@ const { entry, htmlWebpackPlugins } = setMPA();
 module.exports = {
   entry,
   optimization: {
-    emitOnErrors: true,
     moduleIds: 'named'
   },
   resolve: {
     extensions: ['*', '.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.runtime.js',
+      // 'vue$': 'vue/dist/vue.runtime.js',
+      'vue$': 'vue/dist/vue.esm.js',
       '@': path.join(__dirname, '../src'),
     }
+  },
+  externals: {
+    simplemde: 'SimpleMDE',
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            css: ['vue-style-loader', 'css-loader']
+          }
+        }
       },
       {
         test: /\.js(\?.*)?$/,
         exclude: /(node_modules)/,
-        loader: 'babel-loader',
-        include: [path.join(__dirname, '../src'), path.join(__dirname, '../node_modules/webpack-dev-server/client')]
+        loader: 'babel-loader'
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

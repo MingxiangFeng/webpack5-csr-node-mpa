@@ -41,7 +41,7 @@ if(isPro) {
   for (const key in config.entry) {
     const item = config.entry[key]
     // 官方包
-    item.unshift('webpack-hot-middleware/client')
+    item.unshift('webpack-hot-middleware/client?reload=true')
     // 民间优化包
     // item.unshift('./build/webpack-hot-middleware/client')
   }

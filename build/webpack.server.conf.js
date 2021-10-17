@@ -10,18 +10,18 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
   output: {
     path: path.join(__dirname, '../dist'),
-    filename: '[name]/[name].[chunkhash].js',
+    filename: '[name]/[name].[hash].js',
   },
   mode: 'development',
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ['vue-style-loader', { loader: 'css-loader', options: { sourceMap: true } }, 'postcss-loader'],
+        use: ['vue-style-loader', 'css-loader', 'postcss-loader'],
       },
       {
-        test: /\.scss$/,
-        use: ['vue-style-loader', { loader: 'css-loader', options: { sourceMap: true } }, 'postcss-loader', { loader: 'sass-loader', options: { sourceMap: true } },]
+        test: /\.s(a|c)ss$/,
+        use: ['vue-style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
       },
       {
         test: /\.html$/i,
@@ -36,18 +36,18 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(),
     new webpack.ProgressPlugin({
-      activeModules: false,
-      entries: true,
-      handler(percentage, message, ...args) {
-        // e.g. Output each progress message directly to the console:
-        // console.info('percentage==', percentage, 'message==', message, 'args===', ...args);
-      },
-      modules: true,
-      modulesCount: 5000,
-      profile: false,
-      dependencies: true,
-      dependenciesCount: 10000,
-      percentBy: null,
+      // activeModules: false,
+      // entries: true,
+      // handler(percentage, message, ...args) {
+      //   // e.g. Output each progress message directly to the console:
+      //   // console.info('percentage==', percentage, 'message==', message, 'args===', ...args);
+      // },
+      // modules: true,
+      // modulesCount: 5000,
+      // profile: false,
+      // dependencies: true,
+      // dependenciesCount: 10000,
+      // percentBy: null,
     })      
   ],
   devtool: 'cheap-source-map'
