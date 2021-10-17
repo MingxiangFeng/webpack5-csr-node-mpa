@@ -41,9 +41,9 @@ if(isPro) {
   for (const key in config.entry) {
     const item = config.entry[key]
     // 官方包
-    // item.unshift('webpack-hot-middleware/client')
+    item.unshift('webpack-hot-middleware/client')
     // 民间优化包
-    item.unshift('./build/webpack-hot-middleware/client')
+    // item.unshift('./build/webpack-hot-middleware/client')
   }
   const compiler = webpack(config);
   app.use(middleware(compiler, { publicPath: config.output.publicPath }))
